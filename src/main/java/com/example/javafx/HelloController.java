@@ -142,10 +142,6 @@ public class HelloController implements Initializable {
     }
 
 
-
-
-
-
     private void UILoader(String scene){
         Parent root = null;
         try{

@@ -313,7 +313,7 @@ public class Main implements Runnable {
 				}
 			}
 
-			if(Input.isKeyDown(GLFW.GLFW_KEY_E)&& !maxMoveSizeFound){
+			if(Input.isKeyDown(GLFW.GLFW_KEY_E)&& !maxMoveSizeFound&& escapeCount!=0){
 				for (int j = 0; j < GameController.pathOfAllGuards.size(); j++) {
 					if(GameController.pathOfAllGuards.get(j).size()>maxSize){
 						maxSize = GameController.pathOfAllGuards.get(j).size();
@@ -322,35 +322,12 @@ public class Main implements Runnable {
 				maxMoveSizeFound = true;
 			}
 
-			if (Input.isKeyDown(GLFW.GLFW_KEY_E) && moveIndex < maxSize-2) {
+			if (Input.isKeyDown(GLFW.GLFW_KEY_E) && moveIndex < maxSize-2 && escapeCount!=0) {
 				long currTime = System.currentTimeMillis();
 
-				if (currTime - lastClick > 100) {
-					// every Intruder
+//				if (currTime - lastClick > 100) {
 
-//					for (int j = 0; j < GameController.variables.getNumberOfIntruders(); j++) {
-//						for (Agent a : GameController.agents) {
-//							if(a instanceof Intruder){
-//								int[] pathIntruder =
-//								intruders.get(i).move(new Vector2f(pathIntruder[0],pathIntruder[1]),pathIntruder[2]);
-//
-//							}
-//							lastClick = currTime;
-//						}
-//					}
-//
-//					for (int j = 3; j < GameController.agents.size(); j++) {
-//						for (Agent a : GameController.agents) {
-//							if(a instanceof Guard){
-//								int[] pathGuard = a.getGuiMoveList().get(i);
-//								intruders.get(i).move(new Vector2f(pathGuard[0],pathGuard[1]),pathGuard[2]);
-//
-//							}
-//							lastClick = currTime;
-//						}
-//					}
-
-					// agents
+					// Intruders
 					for (int i = 0; i < GameController.pathOfAllIntruders.size(); i++) {
 						if (i < GameController.variables.getNumberOfGuards()) {
 							// path of each Agent
@@ -358,24 +335,23 @@ public class Main implements Runnable {
 							if(pathIntruder.size()>moveIndex){
 								for (int j = 0; j < pathIntruder.size(); j++) {
 									for (int k = 0; k < 10; k++) {
-										float timestep = 0.1f*k;
+										float timestep = 0.001f*k;
 										intruders.get(i).move(new Vector2f(pathIntruder.get(moveIndex)[0] + L+timestep, pathIntruder.get(moveIndex)[1] + L+timestep), pathIntruder.get(moveIndex)[2]);
 									}
-
-
 								}
 							}
 
 							lastClick = currTime;
 						}
-
+						// same for guards.
 						if (!guards.isEmpty()) {
 							if (i < GameController.agents.size()) {
+								// path of each guard
 								ArrayList<int[]> pathGuard = GameController.pathOfAllGuards.get(i);
 								if(pathGuard.size()>moveIndex) {
 									for (int j = 0; j < pathGuard.size(); j++) {
 										for (int k = 0; k < 10; k++) {
-											float timestep = 0.1f*k;
+											float timestep = 0.001f*k;
 											guards.get(i).move(new Vector2f(pathGuard.get(moveIndex)[0] + L+timestep, pathGuard.get(moveIndex)[1] + L+timestep), pathGuard.get(moveIndex)[2]);
 										}
 
@@ -386,7 +362,7 @@ public class Main implements Runnable {
 						}
 					}
 					moveIndex++;
-				}
+//				}
 			}
 
 			if (Input.isKeyDown(GLFW.GLFW_KEY_Q) && moveIndex > 1) {
