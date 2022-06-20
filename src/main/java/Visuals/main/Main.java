@@ -332,6 +332,7 @@ public class Main implements Runnable {
 							// path of each Agent
 							ArrayList<int[]> pathIntruder = GameController.pathOfAllIntruders.get(i);
 							if (pathIntruder.size() > moveIndex) {
+//								{newX, newY, angle, seesTrace, SeesIntruder, hearsYell}
 								for (int j = 0; j < pathIntruder.size(); j++) {
 									for (int k = 0; k < 1000; k++) {
 										float timestep = 0.001f * k;

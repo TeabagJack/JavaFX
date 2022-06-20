@@ -9,8 +9,17 @@ import static base.GameController.agents;
 
 public class Intruder extends LearnerAgent{
 
+    private boolean
+            seesTrace,
+            seesGuard,
+            hearsYell;
+
+
     public Intruder(int[] position, int angle) {
         super(position, angle);
+        seesGuard = false;
+        seesTrace = false;
+        hearsYell = false;
     }
 
     private byte getActionThatMaximizesDistance(int[] position){
@@ -109,5 +118,21 @@ public class Intruder extends LearnerAgent{
 
     public boolean isCaught(){
         return (GameController.intrudersCaught.contains(this));
+    }
+
+    public boolean isSeesGuard() {
+        return seesGuard;
+    }
+
+    public boolean isSeesTrace() {
+        return seesTrace;
+    }
+
+    public void setSeesGuard(boolean seesGuard) {
+        this.seesGuard = seesGuard;
+    }
+
+    public void setSeesTrace(boolean seesTrace) {
+        this.seesTrace = seesTrace;
     }
 }

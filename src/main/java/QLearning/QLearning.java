@@ -122,7 +122,7 @@ public class QLearning {
 
                     // save for gui
                     int newX = this.agent.getX(), newY = this.agent.getY(), index = Intruders.indexOf(a);
-                    pathOfAllIntruders.get(index).add(new int[]{newX, newY, (int) this.agent.getAngleDeg()});
+                    pathOfAllIntruders.get(index).add(makeIntruderData(newX, newY, (Intruder) agent));
                 }
 
                 // if it's a guard
@@ -133,7 +133,7 @@ public class QLearning {
 
                     // save for gui
                     int newX = a.getX(), newY = a.getY(), index = Guards.indexOf(a);
-                    pathOfAllGuards.get(index).add(new int[]{newX, newY, (int) a.getAngleDeg()});
+                    pathOfAllGuards.get(index).add(makeGuardData(newX, newY, (Guard) a));
                 }
             }
             // increment move count
@@ -141,8 +141,6 @@ public class QLearning {
         }
         gameEnded = true;
         putAgentsBackOnSpawn();
-
-
     }
 
     /**
@@ -214,6 +212,12 @@ public class QLearning {
         boolean
                 seesGuard = guardsSeen.size() > 0,
                 seesTrace = tracesSeen.size() > 0;
+
+        // set booleans
+        if(agent instanceof Intruder){
+            ((Intruder) agent).setSeesGuard(seesGuard);
+            ((Intruder) agent).setSeesTrace(seesTrace);
+        }
 
         // if they see guard
         if(seesGuard){
@@ -480,5 +484,53 @@ public class QLearning {
 
     public void setEmTable(EMTable emTable) {
         this.emTable = emTable;
+    }
+
+    public int[] makeIntruderData(int newX, int newY, Intruder i){
+
+        // angle
+        int angle = (int) i.getAngleDeg();
+
+        // sees trace
+        int seesTrace = 0;
+        if(i.isSeesTrace())
+            seesTrace = 1;
+
+        // sees guard
+        int seesGuard = 0;
+        if(i.isSeesGuard())
+            seesGuard = 1;
+
+        // hears yell
+        int hearsYell = 0;
+        if(i.hearsYell())
+            hearsYell = 1;
+
+        // complete data
+        return new int[]{newX, newY, angle, seesTrace, seesGuard, hearsYell};
+    }
+
+    public int[] makeGuardData(int newX, int newY, Guard g){
+
+        // angle
+        int angle = (int) g.getAngleDeg();
+
+        // sees trace
+        int seesTrace = 0;
+        if(g.seesTrace)
+            seesTrace = 1;
+
+        // sees intruder
+        int seesIntruder = 0;
+        if(g.chasingIntruder)
+            seesIntruder = 1;
+
+        // hears yell
+        int hearsYell = 0;
+        if(g.hearsYell())
+            hearsYell = 1;
+
+        // complete data
+        return new int[]{newX, newY, angle, seesTrace, seesIntruder, hearsYell};
     }
 }
