@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.HelloController">
+   <left>
+      <VBox prefHeight="574.0" prefWidth="189.0" style="-fx-background-color: #303030;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox>
+               <children>
+                  <ImageView fitHeight="70.0" fitWidth="100.0" onMouseClicked="#start" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="file:/../res/JavaFX/simulation.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="55.0" top="15.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Button mnemonicParsing="false" onMouseClicked="#start" prefHeight="40.0" prefWidth="108.0" style="-fx-background-color: transparent; -fx-text-fill: #f0f0f0;" text="Start Simulation" textAlignment="CENTER" textFill="#00ff44">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="40.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <ImageView fitHeight="70.0" fitWidth="100.0" onMouseClicked="#manInput" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="file:/../res/JavaFX/ai1.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="55.0" top="15.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Button mnemonicParsing="false" onMouseClicked="#manInput" prefHeight="40.0" prefWidth="106.0" style="-fx-background-color: transparent; -fx-text-fill: #f0f0f0;" text="AI Configuration">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="40.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <ImageView fitHeight="70.0" fitWidth="100.0" onMouseClicked="#fileRead" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="file:/../res/JavaFX/management.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="55.0" top="15.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Button mnemonicParsing="false" onMouseClicked="#fileRead" prefHeight="40.0" prefWidth="106.0" style="-fx-background-color: transparent; -fx-text-fill: #f0f0f0;" text="File Reader">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="38.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <ImageView fitHeight="70.0" fitWidth="100.0" onMouseClicked="#exit" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="file:/../res/JavaFX/exit1.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets left="55.0" top="15.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Button mnemonicParsing="false" onMouseClicked="#exit" prefHeight="40.0" prefWidth="106.0" style="-fx-background-color: transparent; -fx-text-fill: #f0f0f0;" text="Exit" textFill="RED">
+                     <VBox.margin>
+                        <Insets left="38.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font></Button>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </left>
+   <top>
+      <HBox alignment="CENTER_RIGHT" prefHeight="55.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gotta Catch Them All" textAlignment="CENTER" wrappingWidth="253.98828125">
+               <HBox.margin>
+                  <Insets right="170.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="51.0" fitWidth="90.0" layoutX="3.0" onMouseClicked="#exit" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/../res/JavaFX/close.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="3.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <ImageView fitHeight="390.0" fitWidth="654.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="file:/../res/JavaFX/screenshot.png" />
+         </image>
+      </ImageView>
+   </center>
+</BorderPane>

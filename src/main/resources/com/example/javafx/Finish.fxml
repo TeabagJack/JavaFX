@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="426.0" prefWidth="600.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.HelloController">
+   <children>
+      <TextFlow prefHeight="146.0" prefWidth="600.0">
+         <children>
+            <VBox prefHeight="160.0" prefWidth="604.0">
+               <children>
+                  <HBox>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Instructions:" textAlignment="CENTER" wrappingWidth="600.0">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="68.0" prefWidth="506.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="45.0" />
+                     </VBox.margin>
+                     <children>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:/../res/JavaFX/escape.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="5.0" right="50.0" top="10.0" />
+                           </HBox.margin></ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Step 1. Press 'Escape' to start the A.I. Simulation." textAlignment="CENTER" wrappingWidth="400.0">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="25.0" />
+                           </HBox.margin>
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="1.0" green="0.5800842642784119" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </Text>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="5.0" right="22.0" top="10.0" />
+                     </HBox.margin>
+                  </HBox>
+                  <HBox prefHeight="44.0" prefWidth="800.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="10.0" />
+                     </VBox.margin>
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets left="15.0" right="20.0" top="10.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="file:/../res/JavaFX/letter-q.png" />
+                           </image></ImageView>
+                        <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:/../res/JavaFX/letter-e.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets right="25.0" top="10.0" />
+                           </HBox.margin></ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Step 2. Press 'Q' and 'E' for the next and previous timeStep in the simulation." textAlignment="CENTER" wrappingWidth="400.0">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="15.0" />
+                           </HBox.margin>
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="1.0" green="0.5800842642784119" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="39.0" prefWidth="594.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="10.0" />
+                     </VBox.margin>
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:/../res/JavaFX/letter-w.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="15.0" right="20.0" top="10.0" />
+                           </HBox.margin></ImageView>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:/../res/JavaFX/letter-s.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets right="25.0" top="10.0" />
+                           </HBox.margin></ImageView>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Press 'W' and 'S' arrow keys to zoom in and out." textAlignment="CENTER" wrappingWidth="400.0">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="25.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="20.0" layoutY="188.0">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:/../res/JavaFX/letter-a.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="15.0" right="20.0" top="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:/../res/JavaFX/letter-d.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets right="25.0" top="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Press 'A' and 'D' keys to adjust the camera left and right." textAlignment="CENTER" wrappingWidth="400.0">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" top="25.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="70.0" prefWidth="580.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="10.0" />
+                     </VBox.margin>
+                     <children>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:/../res/JavaFX/shift.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="5.0" right="20.0" top="10.0" />
+                           </HBox.margin></ImageView>
+                        <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="file:/../res/JavaFX/space.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets right="25.0" top="12.0" />
+                           </HBox.margin></ImageView>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Press 'LShift' and 'Space' to increase and decrease camera angle" textAlignment="CENTER" wrappingWidth="400.0">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="25.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </TextFlow>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Text fill="#26ff3c" onMouseClicked="#applyMan" strokeType="OUTSIDE" strokeWidth="0.0" text="If you understand, click here:" textAlignment="CENTER" wrappingWidth="264.0">
+            <font>
+               <Font name="System Bold" size="18.0" />
+            </font>
+            <HBox.margin>
+               <Insets left="160.0" top="25.0" />
+            </HBox.margin>
+            </Text>
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#applyMan" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/../res/JavaFX/done.png" />
+               </image>
+               <HBox.margin>
+                  <Insets right="25.0" top="10.0" />
+               </HBox.margin></ImageView>
+         </children>
+      </HBox>
+   </children>
+</VBox>
