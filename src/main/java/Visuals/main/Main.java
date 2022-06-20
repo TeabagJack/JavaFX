@@ -241,8 +241,8 @@ public class Main implements Runnable {
 			intruders.add(new Player(texturedModelIntruder, new Vector3f(pathIntruder[0] + L, terrain.getHeightOfTerrain(pathIntruder[0] + L, pathIntruder[1] + L), pathIntruder[1] + L), 0, 90, 0, 1, j));
 
 		}
-		for (int j = 0; j < GameController.variables.getNumberOfGuards(); j++) {
 
+		for (int j = 0; j < GameController.variables.getNumberOfGuards(); j++) {
 				//players.add(new Player(texturedModelGuard, new Vector3f(pathGuard[0] + L, terrain.getHeightOfTerrain(pathGuard[0] + L, pathGuard[1] + L), pathGuard[1] + L), 0, 90, 0, 1, j));
 				guards.add(new Player(texturedModelGuard, new Vector3f(0 + L, terrain.getHeightOfTerrain(0 + L, 0 + L), 0 + L), 0, 90, 0, 1, j));
 
@@ -327,6 +327,7 @@ public class Main implements Runnable {
 				if (currTime - lastClick > 10) {
 
 					// agents
+
 					for (int i = 0; i < GameController.pathOfAllIntruders.size(); i++) {
 						if (i < GameController.variables.getNumberOfGuards()) {
 							// path of each Agent
@@ -337,6 +338,10 @@ public class Main implements Runnable {
 									for (int k = 0; k < 1000; k++) {
 										float timestep = 0.001f * k;
 										intruders.get(i).move(new Vector2f(pathIntruder.get(moveIndex)[0] + L + timestep, pathIntruder.get(moveIndex)[1] + L + timestep), pathIntruder.get(moveIndex)[2]);
+										if(pathIntruder.get(moveIndex)[3]==1){
+											walls.add(new Entity(texturedModelWall, new Vector3f(pathIntruder.get(moveIndex)[0] + L + timestep,0,pathIntruder.get(moveIndex)[1] + L + timestep),0,90,0,1,1));
+										}
+										walls.remove(walls.size()-1);
 									}
 								}
 							}
