@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+<BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" style="-fx-background-radius: 10; -fx-background-color: rgb(45, 45, 50), rgb(255, 255, 255); -fx-background-insets: 0, 0 1 1 0;" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.javafx.HelloController">
     <top>
         <MenuBar>

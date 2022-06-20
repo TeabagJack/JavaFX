@@ -295,10 +295,6 @@ public class Main implements Runnable {
 
 			if (Input.isKeyDown(GLFW.GLFW_KEY_ESCAPE)&& escapeCount<1) {
 				escapeCount++;
-
-				for (int i = 1; i < 2; i++){
-					System.out.println("start for learning cycle " + i);
-					QLearning.LEARNING_CYCLES = i;
 					g = new GameController();
 					g.startGame();
 
@@ -310,7 +306,6 @@ public class Main implements Runnable {
 					guardsAdded = true;
 					g.runRaycast();
 					g.makeAgentsMoveSmartly();
-				}
 			}
 
 			if(Input.isKeyDown(GLFW.GLFW_KEY_E)&& !maxMoveSizeFound&& escapeCount!=0){
@@ -322,9 +317,9 @@ public class Main implements Runnable {
 				maxMoveSizeFound = true;
 			}
 
-			if (Input.isKeyDown(GLFW.GLFW_KEY_E) && moveIndex < maxSize-2 && escapeCount!=0) {
+			if (Input.isKeyDown(GLFW.GLFW_KEY_E) && moveIndex < maxSize && escapeCount!=0) {
 				long currTime = System.currentTimeMillis();
-				if (currTime - lastClick > 10) {
+				if (currTime - lastClick > 25) {
 
 					// agents
 
@@ -335,13 +330,9 @@ public class Main implements Runnable {
 							if (pathIntruder.size() > moveIndex) {
 //								{newX, newY, angle, seesTrace, SeesIntruder, hearsYell}
 								for (int j = 0; j < pathIntruder.size(); j++) {
-									for (int k = 0; k < 1000; k++) {
-										float timestep = 0.001f * k;
+									for (int k = 0; k < 100; k++) {
+										float timestep = 0.01f * k;
 										intruders.get(i).move(new Vector2f(pathIntruder.get(moveIndex)[0] + L + timestep, pathIntruder.get(moveIndex)[1] + L + timestep), pathIntruder.get(moveIndex)[2]);
-										if(pathIntruder.get(moveIndex)[3]==1){
-											walls.add(new Entity(texturedModelWall, new Vector3f(pathIntruder.get(moveIndex)[0] + L + timestep,0,pathIntruder.get(moveIndex)[1] + L + timestep),0,90,0,1,1));
-										}
-//										walls.remove(walls.size()-1);
 									}
 								}
 							}
@@ -350,7 +341,7 @@ public class Main implements Runnable {
 								for (int j = 0; j < 100; j++) {
 									particleGen.generateParticles(position);
 								}
-								intruders.get(i).move(new Vector2f(0, 0), 0);
+								intruders.get(i).move(new Vector2f(-500, -500), 0);
 							}
 							lastClick = currTime;
 						}
@@ -368,15 +359,17 @@ public class Main implements Runnable {
 										}
 									}
 								}
-								if (moveIndex > pathGuard.size()) {
-									guards.get(i).move(new Vector2f(0, 0), 0);
-								}
 								lastClick = currTime;
 							}
 						}
 					}
 					moveIndex++;
 				}
+			}
+			else if(Input.isKeyDown(GLFW.GLFW_KEY_E) && moveIndex > maxSize-2 && escapeCount!=0){
+				System.out.println("guards won");
+
+
 			}
 
 			if (Input.isKeyDown(GLFW.GLFW_KEY_Q) && moveIndex > 1) {

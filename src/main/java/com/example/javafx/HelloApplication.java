@@ -15,6 +15,10 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("GUIScreen.fxml"));
 
+        root.setStyle("-fx-background-radius: 10;" +
+                "-fx-background-color: rgb(45, 45, 50), rgb(255, 255, 255);" +
+                "-fx-background-insets: 0, 0 1 1 0;");
+
         Scene scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);
 

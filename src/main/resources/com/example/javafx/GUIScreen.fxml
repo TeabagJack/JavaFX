@@ -6,13 +6,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.HelloController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-radius: 10; -fx-background-color: rgb(45, 45, 50), rgb(255, 255, 255); -fx-background-insets: 0, 0 1 1 0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.HelloController">
    <left>
-      <VBox prefHeight="574.0" prefWidth="189.0" style="-fx-background-color: #303030;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="574.0" prefWidth="189.0" style="-fx-background-radius: 10; -fx-background-color: rgb(45, 45, 50), rgb(45, 45, 50); -fx-background-insets: 0, 0 1 1 0;" BorderPane.alignment="CENTER">
          <children>
             <VBox>
                <children>
-                  <ImageView fitHeight="70.0" fitWidth="100.0" onMouseClicked="#start" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="70.0" fitWidth="100.0"  onMouseClicked="#start" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="file:/../res/JavaFX/simulation.png" />
                      </image>

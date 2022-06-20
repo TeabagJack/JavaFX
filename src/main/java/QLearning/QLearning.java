@@ -61,7 +61,7 @@ public class QLearning {
             LEARNING_CYCLES = (int) HelloController.cc;
             MOVE_LIMIT = (int) HelloController.ml;
         }
-        System.out.println("learningCycle: "+LEARNING_CYCLES);
+        System.out.println(LEARNING_CYCLES);
 
         this.map = GameController.map;
         this.agent = agent;
