@@ -44,8 +44,10 @@ public class Guard extends ExplorerAgent {
             setHeardAudio(null);
 
         // guard gives priority to seen Intruders, then Trace and finally yells
-        if(chasingIntruder)
+        if(chasingIntruder){
             followIntruder();
+        }
+
 
         else if (tileWithTraceToChase != null)
             followTrace();
