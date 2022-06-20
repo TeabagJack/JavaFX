@@ -341,7 +341,7 @@ public class Main implements Runnable {
 										if(pathIntruder.get(moveIndex)[3]==1){
 											walls.add(new Entity(texturedModelWall, new Vector3f(pathIntruder.get(moveIndex)[0] + L + timestep,0,pathIntruder.get(moveIndex)[1] + L + timestep),0,90,0,1,1));
 										}
-										walls.remove(walls.size()-1);
+//										walls.remove(walls.size()-1);
 									}
 								}
 							}
@@ -391,7 +391,6 @@ public class Main implements Runnable {
 							for (int j = 0; j < pathIntruder.size(); j++) {
 								intruders.get(i).move(new Vector2f(pathIntruder.get(moveIndex-1)[0] + L, pathIntruder.get(moveIndex-1)[1] + L), pathIntruder.get(moveIndex-1)[2]);
 							}
-
 							lastClick = currTime;
 						}
 						if (i < GameController.variables.getNumberOfGuards()) {
@@ -405,7 +404,6 @@ public class Main implements Runnable {
 					moveIndex--;
 				}
 			}
-
 		}
 
 		ParticleBrain.cleanUp();

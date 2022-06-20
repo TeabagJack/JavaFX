@@ -9,12 +9,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
 import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
@@ -22,100 +20,65 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutionException;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 import static java.util.logging.Level.SEVERE;
 
 public class HelloController implements Initializable {
+
+    private File loadedFileReference;
+
+    private FileTime lastModifiedTime;
+
+    public Label statusMessage;
+
+    public ProgressBar progressBar;
+
+    public Button loadChangesButton;
+
+    public TextArea textArea;
+
+    public static boolean readVariables = false;
+
     @FXML
-    private ImageView perlin;
+    private TextField learningRate;
+    public static double lr;
+
+    @FXML
+    private TextField randomness;
+    public static double r;
+
+    @FXML
+    private TextField discountFactor;
+    public static double df;
+
+    @FXML
+    private TextField moveLimit;
+    public static double ml;
+
+    @FXML
+    private TextField cycleCount;
+    public static double cc;
 
     @FXML
     private BorderPane borderPane;
-
-    @FXML
-    private TextField gravity;
-
-    @FXML
-    private TextField mass;
-
-    @FXML
-    private TextField friction;
-
-    @FXML
-    private TextField startPosX;
-
-    @FXML
-    private TextField goalPosX;
-
-    @FXML
-    private TextField startPosY;
-
-    @FXML
-    private TextField goalPosY;
-
-    @FXML
-    private TextField treePosX;
-
-    @FXML
-    private TextField treePosY;
-
-    @FXML
-    private TextField sandTopX;
-
-    @FXML
-    private TextField sandTopY;
-
-    @FXML
-    private TextField sandBtmX;
-
-    @FXML
-    private TextField sandBtmY;
-
-    @FXML
-    private TextField radius;
-
-    @FXML
-    private TextField maxSpeed;
-
-    @FXML
-    private TextField heightProfile;
-
-    @FXML
-    private TextField courseCreator;
-
-    @FXML
-    private TextField listMoves;
-
-    @FXML
-    private TextField heightMapp;
-
-    @FXML
-    private TextField widthString;
-
-    @FXML
-    private TextField heightString;
-
-
-
-    @FXML
-    private Label welcomeText;
-
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
-
-
-
 
     @FXML
     private void applyMan() throws IOException {
         new Main().start();
     }
 
+    @FXML
+    private void applyVariables(){
+        lr = Double.parseDouble(learningRate.getText());
+        r = Double.parseDouble(randomness.getText());
+        df = Double.parseDouble(discountFactor.getText());
+        ml = Double.parseDouble(moveLimit.getText());
+        cc = Double.parseDouble(cycleCount.getText());
+
+        readVariables = true;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {}
@@ -136,14 +99,17 @@ public class HelloController implements Initializable {
     }
 
     @FXML
-    private void exit(){
-        Stage stage = (Stage) borderPane.getScene().getWindow();
-        stage.close();
+    private void fileRead2(){
+        UILoader("SimpleFileEditor");
     }
 
 
 
-
+    @FXML
+    private void exit(){
+        Stage stage = (Stage) borderPane.getScene().getWindow();
+        stage.close();
+    }
 
 
     private void UILoader(String scene){
@@ -157,12 +123,7 @@ public class HelloController implements Initializable {
     }
 
 
-    private File loadedFileReference;
-    private FileTime lastModifiedTime;
-    public Label statusMessage;
-    public ProgressBar progressBar;
-    public Button loadChangesButton;
-    public TextArea textArea;
+
 
 
     public void initialize() {
@@ -175,11 +136,10 @@ public class HelloController implements Initializable {
         fileChooser.getExtensionFilters().add(
                 new FileChooser.ExtensionFilter("Text files (*.txt)", "*.txt")
         );
-        //set initial directory somewhere user will recognise
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-        //let user select file
+
         File fileToLoad = fileChooser.showOpenDialog(null);
-        //if file has been chosen, load it using asynchronous method (define later)
+
         if (fileToLoad != null) {
             loadFileToTextArea(fileToLoad);
         }
@@ -192,17 +152,16 @@ public class HelloController implements Initializable {
     }
 
     private Task<String> fileLoaderTask(File fileToLoad) {
-        //Create a task to load the file asynchronously
+
         Task<String> loadFileTask = new Task<>() {
             @Override
             protected String call() throws Exception {
                 BufferedReader reader = new BufferedReader(new FileReader(fileToLoad));
-                //Use Files.lines() to calculate total lines - used for progress
+
                 long lineCount;
                 try (Stream<String> stream = Files.lines(fileToLoad.toPath())) {
                     lineCount = stream.count();
                 }
-                //Load in all lines one by one into a StringBuilder separated by "\n" - compatible with TextArea
                 String line;
                 StringBuilder totalFile = new StringBuilder();
                 long linesLoaded = 0;
@@ -214,7 +173,6 @@ public class HelloController implements Initializable {
                 return totalFile.toString();
             }
         };
-        //If successful, update the text area, display a success message and store the loaded file reference
         loadFileTask.setOnSucceeded(workerStateEvent -> {
             try {
                 textArea.setText(loadFileTask.get());
@@ -227,7 +185,6 @@ public class HelloController implements Initializable {
             }
             scheduleFileChecking(loadedFileReference);
         });
-        //If unsuccessful, set text area with error message and status message to failed
         loadFileTask.setOnFailed(workerStateEvent -> {
             textArea.setText("Could not load file from:\n " + fileToLoad.getAbsolutePath());
             statusMessage.setText("Failed to load file");
@@ -240,7 +197,6 @@ public class HelloController implements Initializable {
         fileChangeCheckingService.setOnSucceeded(workerStateEvent -> {
             if (fileChangeCheckingService.getLastValue() == null) return;
             if (fileChangeCheckingService.getLastValue()) {
-                //no need to keep checking
                 fileChangeCheckingService.cancel();
                 notifyUserOfChanges();
             }
@@ -287,7 +243,45 @@ public class HelloController implements Initializable {
         }
     }
 
+    public double getLr() {
+        return lr;
+    }
 
+    public void setLr(double lr) {
+        this.lr = lr;
+    }
+
+    public double getR() {
+        return r;
+    }
+
+    public void setR(double r) {
+        this.r = r;
+    }
+
+    public double getDf() {
+        return df;
+    }
+
+    public void setDf(double df) {
+        this.df = df;
+    }
+
+    public double getMl() {
+        return ml;
+    }
+
+    public void setMl(double ml) {
+        this.ml = ml;
+    }
+
+    public double getCc() {
+        return cc;
+    }
+
+    public void setCc(double cc) {
+        this.cc = cc;
+    }
 
 
 

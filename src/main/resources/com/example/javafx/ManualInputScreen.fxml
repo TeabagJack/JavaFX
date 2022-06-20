@@ -6,432 +6,132 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="566.0" prefWidth="650.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.HelloController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="600.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.HelloController">
    <children>
-      <TabPane prefHeight="574.0" prefWidth="650.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="Game Setup">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="158.0" prefWidth="650.0">
+
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="62.0" prefWidth="586.0">
                      <children>
-                        <Text fill="WHITE" layoutX="77.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Setup" textAlignment="CENTER" wrappingWidth="496.037109375">
+                        <Text fill="WHITE" layoutX="60.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Q Learning Settings" textAlignment="CENTER" wrappingWidth="496.037109375">
                            <font>
-                              <Font name="Arial Nova Bold" size="39.0" />
-                           </font>
-                        </Text>
-                        <HBox layoutX="2.0" layoutY="47.0" prefHeight="40.0" prefWidth="650.0">
-                           <children>
-                              <ImageView fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                 <HBox.margin>
-                                    <Insets left="20.0" />
-                                 </HBox.margin>
-                                 <image>
-                                    <Image url="file:/../res/JavaFX/gravity.png" />
-                                 </image>
-                              </ImageView>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Gravity Constant">
-                                 <HBox.margin>
-                                    <Insets left="25.0" top="10.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField fx:id="gravity" prefWidth="300.0" text="9.81">
-                                 <HBox.margin>
-                                    <Insets left="50.0" top="10.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
-                        <HBox layoutY="87.0" prefHeight="40.0" prefWidth="650.0">
-                           <children>
-                              <ImageView fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="file:/../res/JavaFX/weight.png" />
-                                 </image>
-                                 <HBox.margin>
-                                    <Insets left="20.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Mass of Ball">
-                                 <HBox.margin>
-                                    <Insets left="25.0" top="10.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField fx:id="mass" prefWidth="300.0" text="45">
-                                 <HBox.margin>
-                                    <Insets left="76.0" top="10.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
-                         <HBox layoutX="2.0" layoutY="289.0" prefHeight="40.0" prefWidth="650.0">
-                             <children>
-                              <ImageView fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="file:/../res/JavaFX/finish.png" />
-                                 </image>
-                                 <HBox.margin>
-                                    <Insets left="20.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                                 <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Goal Position ( x , y )">
-                                 <HBox.margin>
-                                    <Insets left="25.0" top="10.0" />
-                                 </HBox.margin>
-                              </Text>
-                                 <TextField fx:id="goalPosX" prefWidth="140.0" text="12">
-                                 <HBox.margin>
-                                    <Insets left="30.0" top="10.0" />
-                                 </HBox.margin>
-                              </TextField>
-                              <TextField fx:id="goalPosY" prefWidth="140.0" text="12">
-                                 <HBox.margin>
-                                    <Insets left="20.0" top="10.0" />
-                                 </HBox.margin>
-                              </TextField>
-                             </children>
-                        </HBox>
-                         <HBox layoutX="2.0" layoutY="167.0" prefHeight="40.0" prefWidth="650.0">
-                             <children>
-                              <ImageView fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="file:/../res/JavaFX/radius.png" />
-                                 </image>
-                                 <HBox.margin>
-                                    <Insets left="20.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                                 <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Radius of Goal">
-                                 <HBox.margin>
-                                    <Insets left="25.0" top="10.0" />
-                                 </HBox.margin>
-                              </Text>
-                                 <TextField fx:id="radius" prefWidth="300.0" text="0.5">
-                                 <HBox.margin>
-                                    <Insets left="61.0" top="10.0" />
-                                 </HBox.margin>
-                              </TextField>
-                             </children>
-                        </HBox>
-                         <HBox layoutX="2.0" layoutY="207.0" prefHeight="40.0" prefWidth="650.0">
-                             <children>
-                              <ImageView fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="file:/../res/JavaFX/speedometer.png" />
-                                 </image>
-                                 <HBox.margin>
-                                    <Insets left="20.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                                 <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Maximum Speed">
-                                 <HBox.margin>
-                                    <Insets left="25.0" top="10.0" />
-                                 </HBox.margin>
-                              </Text>
-                                 <TextField fx:id="maxSpeed" prefWidth="300.0" text="90">
-                                 <HBox.margin>
-                                    <Insets left="48.0" top="10.0" />
-                                 </HBox.margin>
-                              </TextField>
-                             </children>
-                        </HBox>
-                         <HBox layoutY="398.0" prefHeight="40.0" prefWidth="650.0">
-                             <children>
-                              <ImageView fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="file:/../res/JavaFX/forest.png" />
-                                 </image>
-                                 <HBox.margin>
-                                    <Insets left="20.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                                 <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Height Function">
-                                 <HBox.margin>
-                                    <Insets left="25.0" top="10.0" />
-                                 </HBox.margin>
-                              </Text>
-                                 <TextField fx:id="heightProfile" prefHeight="25.0" prefWidth="140.0" text="1">
-                                 <HBox.margin>
-                                    <Insets left="53.0" top="10.0" />
-                                 </HBox.margin>
-                              </TextField>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Minimum value">
-                                 <HBox.margin>
-                                    <Insets left="10.0" top="13.0" />
-                                 </HBox.margin></Text>
-                              <TextField prefHeight="25.0" prefWidth="68.0">
-                                 <HBox.margin>
-                                    <Insets left="8.0" top="10.0" />
-                                 </HBox.margin>
-                              </TextField>
-                             </children>
-                        </HBox>
-                        <Button fx:id="applyManInput" layoutX="302.0" layoutY="498.0" mnemonicParsing="false" onMouseClicked="#applyMan" text="Apply" />
-                         <HBox layoutX="1.0" layoutY="249.0" prefHeight="40.0" prefWidth="650.0">
-                             <children>
-                              <ImageView fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="file:/../res/JavaFX/golf1.png" />
-                                 </image>
-                                 <HBox.margin>
-                                    <Insets left="20.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                                 <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Position ( x , y )">
-                                 <HBox.margin>
-                                    <Insets left="25.0" top="10.0" />
-                                 </HBox.margin>
-                              </Text>
-                                 <TextField fx:id="startPosX" prefWidth="140.0" text="1">
-                                 <HBox.margin>
-                                    <Insets left="30.0" top="10.0" />
-                                 </HBox.margin>
-                              </TextField>
-                              <TextField fx:id="startPosY" prefWidth="140.0" text="1">
-                                 <HBox.margin>
-                                    <Insets left="20.0" top="10.0" />
-                                 </HBox.margin>
-                              </TextField>
-                             </children>
-                        </HBox>
-                           <HBox layoutY="127.0" prefHeight="40.0" prefWidth="650.0">
-                             <children>
-                              <ImageView fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="file:/../res/JavaFX/friction.png" />
-                                 </image>
-                                 <HBox.margin>
-                                    <Insets left="20.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                                 <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Friction Coefficient">
-                                 <HBox.margin>
-                                    <Insets left="25.0" top="10.0" />
-                                 </HBox.margin>
-                              </Text>
-                                 <TextField fx:id="friction" prefWidth="300.0" text="0.3">
-                                 <HBox.margin>
-                                    <Insets left="40.0" top="10.0" />
-                                 </HBox.margin>
-                              </TextField>
-                             </children>
-                        </HBox>
-                        <HBox layoutX="1.0" layoutY="448.0" prefHeight="40.0" prefWidth="650.0">
-                           <children>
-                              <ImageView fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="file:/../res/JavaFX/mountain.png" />
-                                 </image>
-                                 <HBox.margin>
-                                    <Insets left="20.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Height Map">
-                                 <HBox.margin>
-                                    <Insets left="25.0" top="10.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField fx:id="heightMapp" prefHeight="25.0" prefWidth="140.0">
-                                 <HBox.margin>
-                                    <Insets left="75.0" top="10.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
-                        <Text fill="WHITE" layoutX="235.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Terrain Options">
-                           <font>
-                              <Font name="System Bold" size="25.0" />
+                              <Font size="32.0" />
                            </font>
                         </Text>
                      </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="Obstacle Setup">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              </AnchorPane>
+                  <HBox prefHeight="40.0" prefWidth="650.0">
                      <children>
-                        <Text fill="WHITE" layoutX="185.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Obstacle setup" wrappingWidth="281.0">
-                           <font>
-                              <Font size="39.0" />
-                           </font>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="20.0" top="10.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="file:/../res/JavaFX/brain.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Learning Rate">
+                           <HBox.margin>
+                              <Insets left="25.0" top="25.0" />
+                           </HBox.margin>
                         </Text>
-                        <Button fx:id="generateMaze" layoutX="252.0" layoutY="113.0" mnemonicParsing="false" onMouseClicked="#mazeGeneration" prefHeight="34.0" prefWidth="165.0" text="Generate Maze" />
-                        <VBox layoutX="1.0" layoutY="161.0" prefHeight="132.0" prefWidth="650.0">
-                           <children>
-                              <HBox prefHeight="36.0" prefWidth="650.0">
-                                 <children>
-                                    <ImageView fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="file:/../res/JavaFX/garden.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin></ImageView>
-                                    <Label prefHeight="17.0" prefWidth="126.0" text="Tree Position ( x , y)" textFill="WHITE">
-                                       <HBox.margin>
-                                          <Insets left="10.0" top="40.0" />
-                                       </HBox.margin></Label>
-                                    <TextField fx:id="treePosX" prefHeight="25.0" prefWidth="75.0">
-                                       <HBox.margin>
-                                          <Insets left="45.0" top="38.0" />
-                                       </HBox.margin></TextField>
-                                    <TextField fx:id="treePosY" prefHeight="25.0" prefWidth="75.0">
-                                       <HBox.margin>
-                                          <Insets left="10.0" top="38.0" />
-                                       </HBox.margin></TextField>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="24.0" prefWidth="650.0">
-                                 <children>
-                                    <ImageView fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="file:/../res/JavaFX/random.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets left="80.0" top="30.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <Button fx:id="randomTree" mnemonicParsing="false" onMouseClicked="#applyRandomTrees" text="Randomize position">
-                                       <HBox.margin>
-                                          <Insets left="30.0" top="40.0" />
-                                       </HBox.margin></Button>
-                                    <Button fx:id="treeButton" mnemonicParsing="false" onMouseClicked="#applyTreesButton" prefHeight="25.0" prefWidth="122.0" text="Add Tree">
-                                       <HBox.margin>
-                                          <Insets left="100.0" top="40.0" />
-                                       </HBox.margin></Button>
-                                    <Button fx:id="resetTreeButton" mnemonicParsing="false" onMouseClicked="#resetTreeList" text="Reset List">
-                                       <HBox.margin>
-                                          <Insets left="20.0" top="40.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                        <HBox layoutX="1.0" layoutY="309.0" prefHeight="161.0" prefWidth="650.0">
-                           <children>
-                              <ImageView fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="file:/../res/JavaFX/desert.png" />
-                                 </image>
-                                 <HBox.margin>
-                                    <Insets top="20.0" />
-                                 </HBox.margin></ImageView>
-                              <VBox prefHeight="190.0" prefWidth="579.0">
-                                 <children>
-                                    <HBox prefHeight="65.0" prefWidth="546.0">
-                                       <children>
-                                          <Label text="Sand | Top Left ( x , y )" textFill="WHITE">
-                                             <HBox.margin>
-                                                <Insets left="20.0" top="40.0" />
-                                             </HBox.margin>
-                                          </Label>
-                                          <TextField fx:id="sandTopX" prefHeight="25.0" prefWidth="75.0">
-                                             <HBox.margin>
-                                                <Insets left="60.0" top="40.0" />
-                                             </HBox.margin>
-                                          </TextField>
-                                          <TextField fx:id="sandTopY" prefHeight="25.0" prefWidth="75.0">
-                                             <HBox.margin>
-                                                <Insets left="10.0" top="40.0" />
-                                             </HBox.margin>
-                                          </TextField>
-                                       </children>
-                                    </HBox>
-                                    <HBox prefHeight="30.0" prefWidth="552.0">
-                                       <children>
-                                          <Label text="Sand | Bottom Right ( x , y )" textFill="WHITE">
-                                             <HBox.margin>
-                                                <Insets left="20.0" top="7.0" />
-                                             </HBox.margin>
-                                          </Label>
-                                          <TextField fx:id="sandBtmX" prefHeight="25.0" prefWidth="75.0">
-                                             <HBox.margin>
-                                                <Insets left="32.0" top="5.0" />
-                                             </HBox.margin>
-                                          </TextField>
-                                          <TextField fx:id="sandBtmY" prefWidth="75.0">
-                                             <HBox.margin>
-                                                <Insets left="10.0" top="5.0" />
-                                             </HBox.margin>
-                                          </TextField>
-                                       </children>
-                                    </HBox>
-                                    <HBox prefHeight="65.0" prefWidth="552.0">
-                                       <children>
-                                          <ImageView fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="file:/../res/JavaFX/random.png" />
-                                             </image>
-                                             <HBox.margin>
-                                                <Insets top="30.0" />
-                                             </HBox.margin>
-                                          </ImageView>
-                                          <Button fx:id="randomSand" mnemonicParsing="false" onMouseClicked="#applyRandomSand" text="Randomize position">
-                                             <HBox.margin>
-                                                <Insets left="30.0" top="40.0" />
-                                             </HBox.margin>
-                                          </Button>
-                                          <Button fx:id="sandButton" mnemonicParsing="false" onMouseClicked="#applySandButton" prefHeight="25.0" prefWidth="122.0" text="Add Sand">
-                                             <HBox.margin>
-                                                <Insets left="100.0" top="40.0" />
-                                             </HBox.margin>
-                                          </Button>
-                                          <Button fx:id="resetSandButton" mnemonicParsing="false" onMouseClicked="#resetSandList" text="Reset List">
-                                             <HBox.margin>
-                                                <Insets left="20.0" top="40.0" />
-                                             </HBox.margin>
-                                          </Button>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets bottom="30.0" />
-                                       </VBox.margin>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                           </children></HBox>
-                        <Text fill="WHITE" layoutX="213.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Field Size: 256 x 256" textAlignment="CENTER" wrappingWidth="223.634765625" />
-                     </children></AnchorPane>
-            </content>
-          </Tab>
-           <Tab text="Map Generator">
-              <VBox layoutY="330.0" prefHeight="200.0" prefWidth="650.0">
-                  <children>
-                     <ImageView fx:id="perlin" fitHeight="418.0" fitWidth="444.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="file:/../res/saved.png" />
-                        </image>
-                        <VBox.margin>
-                           <Insets left="85.0" top="20.0" />
-                        </VBox.margin>
-                     </ImageView>
-                     <HBox prefHeight="100.0" prefWidth="200.0">
-                        <children>
-                           <Button fx:id="randomHeight" mnemonicParsing="false" onMouseClicked="#randomNoiseGenerate" text="Randomize">
-                              <HBox.margin>
-                                 <Insets left="130.0" top="20.0" />
-                              </HBox.margin></Button>
-                           <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Width:">
-                              <HBox.margin>
-                                 <Insets left="20.0" top="25.0" />
-                              </HBox.margin></Text>
-                           <TextField fx:id="widthString" prefHeight="25.0" prefWidth="75.0" text="256">
-                              <HBox.margin>
-                                 <Insets left="10.0" top="20.0" />
-                              </HBox.margin></TextField>
-                           <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Height:">
-                              <HBox.margin>
-                                 <Insets left="20.0" top="25.0" />
-                              </HBox.margin></Text>
-                           <TextField fx:id="heightString" prefHeight="25.0" prefWidth="75.0" text="256">
-                              <HBox.margin>
-                                 <Insets left="10.0" top="20.0" />
-                              </HBox.margin></TextField>
-                        </children>
-                     </HBox>
-                  </children></VBox>
-           </Tab>
-        </tabs>
-      </TabPane>
+                        <TextField fx:id="learningRate" prefWidth="300.0" text="0.3">
+                           <HBox.margin>
+                              <Insets left="50.0" top="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="40.0" prefWidth="650.0">
+                     <children>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="20.0" top="10.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="file:/../res/JavaFX/dices.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Randomness">
+                           <HBox.margin>
+                              <Insets left="25.0" top="25.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="randomness" prefWidth="300.0" text="0.1">
+                           <HBox.margin>
+                              <Insets left="55.0" top="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="40.0" prefWidth="650.0">
+                     <children>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="20.0" top="10.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="file:/../res/JavaFX/discount.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Discount Factor">
+                           <HBox.margin>
+                              <Insets left="25.0" top="25.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="discountFactor" prefWidth="300.0" text="0.7">
+                           <HBox.margin>
+                              <Insets left="40.0" top="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="40.0" prefWidth="650.0">
+                     <children>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="20.0" top="10.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="file:/../res/JavaFX/limited.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Move Limit">
+                           <HBox.margin>
+                              <Insets left="25.0" top="25.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="moveLimit" prefWidth="300.0" text="10000">
+                           <HBox.margin>
+                              <Insets left="65.0" top="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="40.0" prefWidth="650.0">
+                     <children>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="20.0" top="10.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="file:/../res/JavaFX/cycle.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Learning Cycles">
+                           <HBox.margin>
+                              <Insets left="25.0" top="25.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="cycleCount" prefWidth="300.0" text="1000">
+                           <HBox.margin>
+                              <Insets left="40.0" top="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <Button fx:id="applyManInput" mnemonicParsing="false" onMouseClicked="#applyVariables" text="Apply">
+         <VBox.margin>
+            <Insets left="285.0" top="10.0" />
+         </VBox.margin>
+      </Button>
    </children>
 </VBox>

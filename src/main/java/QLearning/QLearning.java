@@ -4,6 +4,7 @@ import Controller.Map;
 import Controller.Teleport;
 import Controller.Tile;
 import base.*;
+import com.example.javafx.HelloController;
 import org.lwjglx.test.spaceinvaders.Game;
 
 import java.util.ArrayList;
@@ -46,6 +47,22 @@ public class QLearning {
      */
 
     public QLearning(LearnerAgent agent) {
+        if(!HelloController.readVariables){
+            LEARNING_RATE = 0.3;
+            DISCOUNT_FACTOR = 0.7;
+            RANDOMNESS_LEVEL = 0.1;
+            LEARNING_CYCLES = 1000;
+            MOVE_LIMIT = 1000;
+        }
+        else{
+            LEARNING_RATE = HelloController.lr;
+            DISCOUNT_FACTOR = HelloController.df;
+            RANDOMNESS_LEVEL = HelloController.r;
+            LEARNING_CYCLES = (int) HelloController.cc;
+            MOVE_LIMIT = (int) HelloController.ml;
+        }
+        System.out.println("learningCycle: "+LEARNING_CYCLES);
+
         this.map = GameController.map;
         this.agent = agent;
         this.qTable = new QTable(map);
