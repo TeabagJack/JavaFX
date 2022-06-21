@@ -12,7 +12,7 @@ public class Yell extends AudioObject {
      *
      */
 
-    public static int YELL_RADIUS = 6;
+    public static int YELL_RADIUS = 10;
 
     public ArrayList<int[]> yellPositions=new ArrayList<>();
 

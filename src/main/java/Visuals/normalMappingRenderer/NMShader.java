@@ -10,7 +10,7 @@ import org.lwjglx.util.vector.Vector4f;
 import Visuals.entities.Light;
 import Visuals.shaders.ShaderProgram3D;
 
-public class NormalMappingShader extends ShaderProgram3D{
+public class NMShader extends ShaderProgram3D{
 
 	private static final int MAX_LIGHTS = 4;
 	
@@ -32,7 +32,7 @@ public class NormalMappingShader extends ShaderProgram3D{
 	private int location_modelTexture;
 	private int location_normalMap;
 
-	public NormalMappingShader() {
+	public NMShader() {
 		super(VERTEX_FILE, FRAGMENT_FILE);
 	}
 

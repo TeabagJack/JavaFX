@@ -49,7 +49,7 @@ public class QLearning {
             LEARNING_RATE = 0.3;
             DISCOUNT_FACTOR = 0.7;
             RANDOMNESS_LEVEL = 0.1;
-            LEARNING_CYCLES = 1000;
+            LEARNING_CYCLES = 1;
             MOVE_LIMIT = 1000;
         }
         else{
@@ -136,12 +136,15 @@ public class QLearning {
                     byte action = getNextAction();
                     tryPerformingAction(action);
                     updateQValue();
-
                     // save for gui
                     int newX = this.agent.getX(), newY = this.agent.getY(), index = Intruders.indexOf(a);
                     pathOfAllIntruders.get(index).add(makeIntruderData(newX, newY, (Intruder) agent));
-                }
+                    System.out.println(this.agent.trace.getTraceTiles().size());
+                    for (int j = 0; j < this.agent.trace.getTraceTiles().size(); j++) {
+                        traceList.add(this.agent.trace.getTraceTiles().get(j));
+                    }
 
+                }
                 // if it's a guard
                 else if (a.getClass() == Guard.class) {
 
@@ -151,6 +154,9 @@ public class QLearning {
                     // save for gui
                     int newX = a.getX(), newY = a.getY(), index = Guards.indexOf(a);
                     pathOfAllGuards.get(index).add(makeGuardData(newX, newY, (Guard) a));
+                    for (int j = 0; j < this.agent.trace.getTraceTiles().size(); j++) {
+                        traceList.add(a.trace.getTraceTiles().get(j));
+                    }
                 }
             }
             // increment move count
@@ -469,7 +475,6 @@ public class QLearning {
                 furthestNeighbour = neighbour;
             }
         }
-
         return furthestNeighbour;
     }
 

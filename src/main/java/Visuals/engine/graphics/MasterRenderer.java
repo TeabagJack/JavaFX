@@ -5,7 +5,7 @@ import Visuals.entities.Camera;
 import Visuals.entities.Entity;
 import Visuals.entities.Light;
 import Visuals.main.Main;
-import Visuals.normalMappingRenderer.NormalMappingRenderer;
+import Visuals.normalMappingRenderer.NMRenderer;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL46;
 import org.lwjglx.util.vector.Matrix4f;
@@ -38,9 +38,11 @@ public class MasterRenderer {
     private TerrainRenderer terrainRenderer;
     private TerrainShader terrainShader = new TerrainShader();
     private Map<TexturedModel, List<Entity>> entities = new HashMap<TexturedModel, List<Entity>>();
+    private Map<TexturedModel, List<Entity>> transparentEntities = new HashMap<TexturedModel, List<Entity>>();
     private List<Terrain> terrains = new ArrayList<Terrain>();
     private SkyboxRenderer skyboxRenderer;
-    private NormalMappingRenderer normalMapRenderer;
+    private NMRenderer normalMapRenderer;
+    private EntityRenderer rendererTransparent;
     private Map<TexturedModel, List<Entity>> normalMapEntities = new HashMap<TexturedModel, List<Entity>>();
 
 
@@ -49,9 +51,10 @@ public class MasterRenderer {
         enableCulling();
         createProjectionMatrix();
         renderer = new EntityRenderer(shader, projectionMatrix);
+        rendererTransparent = new EntityRenderer(shader,projectionMatrix);
         terrainRenderer = new TerrainRenderer(terrainShader,projectionMatrix);
         skyboxRenderer = new SkyboxRenderer(loader, projectionMatrix);
-        normalMapRenderer = new NormalMappingRenderer(projectionMatrix);
+        normalMapRenderer = new NMRenderer(projectionMatrix);
     }
 
 
@@ -72,16 +75,15 @@ public class MasterRenderer {
         shader.loadSkyColour(RED,GREEN,BLUE);
         shader.loadLights(lights);
         shader.loadViewMatrix(camera);
-
         renderer.render(entities);
+        normalMapRenderer.render(normalMapEntities,clipPlane,lights,camera);
 
 
-
-        shader.stop();
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-        normalMapRenderer.render(normalMapEntities,clipPlane,lights,camera);
+        rendererTransparent.render(transparentEntities);
         glDisable(GL_BLEND);
+        shader.stop();
         terrainShader.start();
         terrainShader.loadClipPlane(clipPlane);
         terrainShader.loadSkyColour(RED,GREEN,BLUE);
@@ -93,6 +95,7 @@ public class MasterRenderer {
         terrains.clear();
         entities.clear();
         normalMapEntities.clear();
+        transparentEntities.clear();
     }
 
     public void processTerrain(Terrain terrain){
@@ -111,6 +114,18 @@ public class MasterRenderer {
         }
     }
 
+    public void processTransparentEntities(Entity entity){
+        TexturedModel entityModel = entity.getModel();
+        List<Entity> batch = transparentEntities.get(entityModel);
+        if(batch!=null){
+            batch.add(entity);
+        } else{
+            List<Entity> newBatch = new ArrayList<Entity>();
+            newBatch.add(entity);
+            transparentEntities.put(entityModel,newBatch);
+        }
+    }
+
     public void processNormalMapEntity(Entity entity){
         TexturedModel entityModel = entity.getModel();
         List<Entity> batch = normalMapEntities.get(entityModel);
@@ -124,24 +139,12 @@ public class MasterRenderer {
         }
     }
 
-    public void renderShadowMap(List<Entity> entityList, Light sun){
-        for (Entity entity: entityList) {
-            processEntity(entity);
-
-            
-        }
-
-        entities.clear();
-
-    }
-
 
     public void cleanUp(){
         shader.cleanUp();
         terrainShader.cleanUp();
         skyboxRenderer.getShader().cleanUp();
         normalMapRenderer.cleanUp();
-
     }
 
     public void prepare(){

@@ -16,19 +16,14 @@ public class Particle {
     private float scale;
     private float timeCounter = 0;
     private float playerGravity = -70;
-
     private ParticleTexture texture;
-
     public float getDistance() {
         return distance;
     }
-
     private Vector2f textureOffset1 = new Vector2f();
     private Vector2f textureOffset2 = new Vector2f();
     private float blend;
     private float distance;
-
-
 
     public Particle(ParticleTexture texture, Vector3f position, Vector3f velocity, float gravity, float duration, float rotation, float scale) {
         this.position = position;
@@ -62,7 +57,6 @@ public class Particle {
 
         setTextureOffset(textureOffset1, index1);
         setTextureOffset(textureOffset2,index2);
-
     }
 
     private void setTextureOffset(Vector2f offset, int index){
@@ -71,10 +65,6 @@ public class Particle {
         offset.x = (float) col / texture.getNumRows();
         offset.y = (float) row / texture.getNumRows();
     }
-
-
-
-
 
 
     public Vector2f getTextureOffset1() {
@@ -101,52 +91,12 @@ public class Particle {
         this.position = position;
     }
 
-    public Vector3f getVelocity() {
-        return velocity;
-    }
-
-    public void setVelocity(Vector3f velocity) {
-        this.velocity = velocity;
-    }
-
-    public float getGravity() {
-        return gravity;
-    }
-
-    public void setGravity(float gravity) {
-        this.gravity = gravity;
-    }
-
-    public float getDuration() {
-        return duration;
-    }
-
-    public void setDuration(float duration) {
-        this.duration = duration;
-    }
-
     public float getRotation() {
         return rotation;
     }
 
-    public void setRotation(float rotation) {
-        this.rotation = rotation;
-    }
-
     public float getScale() {
         return scale;
-    }
-
-    public void setScale(float scale) {
-        this.scale = scale;
-    }
-
-    public float getTimeCounter() {
-        return timeCounter;
-    }
-
-    public void setTimeCounter(float timeCounter) {
-        this.timeCounter = timeCounter;
     }
 
 

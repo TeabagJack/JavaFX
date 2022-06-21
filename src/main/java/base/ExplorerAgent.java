@@ -131,6 +131,7 @@ public class ExplorerAgent extends Agent{
         // update vision area
         updateVisionArea();
 
+
     }
 
     public void updateAngle(int[] nextPosition){
@@ -154,6 +155,7 @@ public class ExplorerAgent extends Agent{
 
     public void applyMove(int[] nextPosition){
         getTrace().addToTrace(new int[]{getX(), getY()});
+        System.out.println("trace added at: "+ getX()+ ", "+getY() );
         this.setPosition(nextPosition[0], nextPosition[1]);
         exploredTiles.add(new int[]{nextPosition[0], nextPosition[1]});
     }

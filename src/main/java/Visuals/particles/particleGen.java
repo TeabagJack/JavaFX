@@ -9,19 +9,20 @@ import org.lwjglx.util.vector.Vector3f;
 import org.lwjglx.util.vector.Vector4f;
 
 
-public class ParticleGenerator {
+public class particleGen {
 
     private float pps, averageSpeed, gravityComplient, averageLifeLength, averageScale;
 
-    private float speedError, lifeError, scaleError = 0;
+    private float speede=0;
+    private float lifee=0;
+    private float scalee = 0;
     private boolean randomRotation = false;
     private Vector3f direction;
     private float directionDeviation = 0;
     private ParticleTexture texture;
-
     private Random random = new Random();
 
-    public ParticleGenerator(ParticleTexture texture, float pps, float speed, float gravityComplient, float lifeLength, float scale) {
+    public particleGen(ParticleTexture texture, float pps, float speed, float gravityComplient, float lifeLength, float scale) {
         this.texture = texture;
         this.pps = pps;
         this.averageSpeed = speed;
@@ -43,28 +44,19 @@ public class ParticleGenerator {
         randomRotation = true;
     }
 
-    /**
-     * @param error
-     *            - A number between 0 and 1, where 0 means no error margin.
-     */
-    public void setSpeedError(float error) {
-        this.speedError = error * averageSpeed;
+
+    public void setSpeede(float e) {
+        this.speede = e * averageSpeed;
     }
 
-    /**
-     * @param error
-     *            - A number between 0 and 1, where 0 means no error margin.
-     */
-    public void setLifeError(float error) {
-        this.lifeError = error * averageLifeLength;
+
+    public void setLifee(float e) {
+        this.lifee = e * averageLifeLength;
     }
 
-    /**
-     * @param error
-     *            - A number between 0 and 1, where 0 means no error margin.
-     */
-    public void setScaleError(float error) {
-        this.scaleError = error * averageScale;
+
+    public void setScalee(float e) {
+        this.scalee = e * averageScale;
     }
 
 
@@ -85,14 +77,14 @@ public class ParticleGenerator {
     private void emitParticle(Vector3f center) {
         Vector3f velocity = null;
         if(direction!=null){
-            velocity = generateRandomUnitVectorWithinCone(direction, directionDeviation);
+            velocity = genRandomUnitVectorInCone(direction, directionDeviation);
         }else{
-            velocity = generateRandomUnitVector();
+            velocity = genRandomUnitVector();
         }
         velocity.normalise();
-        velocity.scale(generateValue(averageSpeed, speedError));
-        float scale = generateValue(averageScale, scaleError);
-        float lifeLength = generateValue(averageLifeLength, lifeError);
+        velocity.scale(generateValue(averageSpeed, speede));
+        float scale = generateValue(averageScale, scalee);
+        float lifeLength = generateValue(averageLifeLength, lifee);
         new Particle(texture,new Vector3f(center), velocity, gravityComplient, lifeLength, generateRotation(), scale);
     }
 
@@ -109,7 +101,7 @@ public class ParticleGenerator {
         }
     }
 
-    private static Vector3f generateRandomUnitVectorWithinCone(Vector3f coneDirection, float angle) {
+    private static Vector3f genRandomUnitVectorInCone(Vector3f dir, float angle) {
         float cosAngle = (float) Math.cos(angle);
         Random random = new Random();
         float theta = (float) (random.nextFloat() * 2f * Math.PI);
@@ -119,20 +111,20 @@ public class ParticleGenerator {
         float y = (float) (rootOneMinusZSquared * Math.sin(theta));
 
         Vector4f direction = new Vector4f(x, y, z, 1);
-        if (coneDirection.x != 0 || coneDirection.y != 0 || (coneDirection.z != 1 && coneDirection.z != -1)) {
-            Vector3f rotateAxis = Vector3f.cross(coneDirection, new Vector3f(0, 0, 1), null);
-            rotateAxis.normalise();
-            float rotateAngle = (float) Math.acos(Vector3f.dot(coneDirection, new Vector3f(0, 0, 1)));
+        if (dir.x != 0 || dir.y != 0 || (dir.z != 1 && dir.z != -1)) {
+            Vector3f axis = Vector3f.cross(dir, new Vector3f(0, 0, 1), null);
+            axis.normalise();
+            float rotateAngle = (float) Math.acos(Vector3f.dot(dir, new Vector3f(0, 0, 1)));
             Matrix4f rotationMatrix = new Matrix4f();
-            rotationMatrix.rotate(-rotateAngle, rotateAxis);
+            rotationMatrix.rotate(-rotateAngle, axis);
             Matrix4f.transform(rotationMatrix, direction, direction);
-        } else if (coneDirection.z == -1) {
+        } else if (dir.z == -1) {
             direction.z *= -1;
         }
         return new Vector3f(direction);
     }
 
-    private Vector3f generateRandomUnitVector() {
+    private Vector3f genRandomUnitVector() {
         float theta = (float) (random.nextFloat() * 2f * Math.PI);
         float z = (random.nextFloat() * 2) - 1;
         float rootOneMinusZSquared = (float) Math.sqrt(1 - z * z);

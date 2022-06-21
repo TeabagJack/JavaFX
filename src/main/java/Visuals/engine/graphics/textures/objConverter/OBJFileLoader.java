@@ -127,7 +127,7 @@ public class OBJFileLoader {
 
     private static void dealWithAlreadyProcessedVertex(Vertex previousVertex, int newTextureIndex,
                                                        int newNormalIndex, List<Integer> indices, List<Vertex> vertices) {
-        if (previousVertex.hasSameTextureAndNormal(newTextureIndex, newNormalIndex)) {
+        if (previousVertex.normalTextureTheSame(newTextureIndex, newNormalIndex)) {
             indices.add(previousVertex.getIndex());
         } else {
             Vertex anotherVertex = previousVertex.getDuplicateVertex();

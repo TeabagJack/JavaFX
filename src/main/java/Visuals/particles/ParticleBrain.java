@@ -37,20 +37,17 @@ public class ParticleBrain {
 
     public static void renderParticles(Camera camera){
         renderer.render(particles, camera);
-
     }
 
     public static void cleanUp(){
         renderer.cleanUp();
-
     }
 
     public static void addParticle(Particle particle){
         List<Particle> list = particles.get(particle.getTexture());
         if (list ==null){
-            list = new ArrayList<Particle>();
+            list = new ArrayList<>();
             particles.put(particle.getTexture(),list);
-
         }
         list.add(particle);
     }

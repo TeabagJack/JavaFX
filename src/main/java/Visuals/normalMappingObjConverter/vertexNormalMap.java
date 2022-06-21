@@ -5,20 +5,20 @@ import java.util.List;
 
 import org.lwjglx.util.vector.Vector3f;
 
-public class VertexNM {
+public class vertexNormalMap {
 	
-	private static final int NO_INDEX = -1;
+	private static final int remove = -1;
 	
 	private Vector3f position;
-	private int textureIndex = NO_INDEX;
-	private int normalIndex = NO_INDEX;
-	private VertexNM duplicateVertex = null;
+	private int textureIndex = remove;
+	private int normalIndex = remove;
+	private vertexNormalMap duplicateVertex = null;
 	private int index;
 	private float length;
 	private List<Vector3f> tangents = new ArrayList<Vector3f>();
 	private Vector3f averagedTangent = new Vector3f(0, 0, 0);
 	
-	protected VertexNM(int index, Vector3f position){
+	protected vertexNormalMap(int index, Vector3f position){
 		this.index = index;
 		this.position = position;
 		this.length = position.length();
@@ -27,15 +27,14 @@ public class VertexNM {
 	protected void addTangent(Vector3f tangent){
 		tangents.add(tangent);
 	}
-	
-	//NEW
-	protected VertexNM duplicate(int newIndex){
-		VertexNM vertex = new VertexNM(newIndex, position);
+
+	protected vertexNormalMap duplicate(int newIndex){
+		vertexNormalMap vertex = new vertexNormalMap(newIndex, position);
 		vertex.tangents = this.tangents;
 		return vertex;
 	}
 	
-	protected void averageTangents(){
+	protected void avgTan(){
 		if(tangents.isEmpty()){
 			return;
 		}
@@ -58,7 +57,7 @@ public class VertexNM {
 	}
 	
 	protected boolean isSet(){
-		return textureIndex!=NO_INDEX && normalIndex!=NO_INDEX;
+		return textureIndex!= remove && normalIndex!= remove;
 	}
 	
 	protected boolean hasSameTextureAndNormal(int textureIndexOther,int normalIndexOther){
@@ -85,11 +84,11 @@ public class VertexNM {
 		return normalIndex;
 	}
 
-	protected VertexNM getDuplicateVertex() {
+	protected vertexNormalMap getDuplicateVertex() {
 		return duplicateVertex;
 	}
 
-	protected void setDuplicateVertex(VertexNM duplicateVertex) {
+	protected void setDuplicateVertex(vertexNormalMap duplicateVertex) {
 		this.duplicateVertex = duplicateVertex;
 	}
 

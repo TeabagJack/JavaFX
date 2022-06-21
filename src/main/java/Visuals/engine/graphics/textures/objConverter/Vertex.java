@@ -18,7 +18,7 @@ public class Vertex {
         this.length = position.length();
     }
 
-    public boolean hasSameTextureAndNormal(int textureIndexOther,int normalIndexOther){
+    public boolean normalTextureTheSame(int textureIndexOther, int normalIndexOther){
         return textureIndexOther==textureIndex && normalIndexOther==normalIndex;
     }
 

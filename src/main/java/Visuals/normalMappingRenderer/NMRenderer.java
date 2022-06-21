@@ -19,12 +19,12 @@ import Visuals.engine.graphics.MasterRenderer;
 import Visuals.engine.graphics.textures.ModelTexture;
 import Visuals.maths.Maths;
 
-public class NormalMappingRenderer {
+public class NMRenderer {
 
-	private NormalMappingShader shader;
+	private NMShader shader;
 
-	public NormalMappingRenderer(Matrix4f projectionMatrix) {
-		this.shader = new NormalMappingShader();
+	public NMRenderer(Matrix4f projectionMatrix) {
+		this.shader = new NMShader();
 		shader.start();
 		shader.loadProjectionMatrix(projectionMatrix);
 		shader.connectTextureUnits();

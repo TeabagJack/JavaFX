@@ -20,9 +20,12 @@ public class Agent {
     private byte actionPerformed;
     private int[] previousState;
     private int[] spawnPosition;
-    private Trace trace;
+    public Trace trace;
+    public ArrayList<int[]> listOfTracePerMoveIntruder;
+    public ArrayList<int[]> listOfTracePerMoveGuard;
     private AudioObject audioObject = null;
     private boolean isOnTower;
+
 
     public ArrayList<int[]> getGuiMoveList() {
         return guiMoveList;
@@ -48,7 +51,8 @@ public class Agent {
         savedPath = new ArrayList<>();
         savedPath.add(new int[] {position[0], position[1]});
         previousState = new int[2];
-
+        listOfTracePerMoveIntruder = new ArrayList<>();
+        listOfTracePerMoveGuard = new ArrayList<>();
         trace = new Trace(this);
 
         isOnTower = false;

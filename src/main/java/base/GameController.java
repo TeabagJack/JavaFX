@@ -32,6 +32,9 @@ public class GameController {
     public static int numOfGuardWins;
     public static int numOfIntruderWins;
 
+    public static ArrayList<ArrayList<int[]>> listOfTrace;
+
+
     public static final double TOWER_VISION_BONUS = 10;
 
     public GameController() {
@@ -50,6 +53,8 @@ public class GameController {
         pathOfAllIntruders = new ArrayList<>();
         intruderSpawnPoints = new ArrayList<>();
         guardSpawnPoints = new ArrayList<>();
+
+        listOfTrace = new ArrayList<>();
 
         Guards = new ArrayList<>();
         Intruders = new ArrayList<>();

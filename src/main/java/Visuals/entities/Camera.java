@@ -36,7 +36,7 @@ public class Camera {
         float offsetZ = (float) (horDistance*Math.cos(Math.toRadians(theta)));
         position.x = player.getPosition().x - offsetX;
         position.z = player.getPosition().z - offsetZ;
-        position.y = player.getPosition().y + vertDistance;
+        position.y = player.getPosition().y+2 + vertDistance;
         this.yaw = 180 - (player.getRotY()+angleAroundPlayer);
     }
 
@@ -52,7 +52,7 @@ public class Camera {
         if(Input.isKeyDown(GLFW_KEY_W)&& distanceFromPlayer<=100){
             distanceFromPlayer += 1;
         }
-        else if (Input.isKeyDown(GLFW.GLFW_KEY_S)&& distanceFromPlayer>10){
+        else if (Input.isKeyDown(GLFW.GLFW_KEY_S)&& distanceFromPlayer>1){
             distanceFromPlayer -= 1;
         }
     }
