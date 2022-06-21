@@ -1,0 +1,41 @@
+# Blender MTL File: 'None'
+# Material Count: 3
+
+newmtl MagicStone
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump -bm 9.999999 C:\\Users\\Zaker\\Downloads\\magic-portal\\source\\Brick_normal.png
+map_Kd C:\\Users\\Zaker\\Downloads\\magic-portal\\source\\MagicStone_base.png
+map_Ke MagicStone_emis.png
+
+newmtl MagicStoneMoss
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump -bm 9.999999 C:\\Users\\Zaker\\Downloads\\magic-portal\\source\\Brick_normal.png
+map_Kd C:\\Users\\Zaker\\Downloads\\magic-portal\\source\\MagicStoneMoss_base.png
+map_Ke MagicStone_emis.png
+
+newmtl PortalSurface
+Ns 728.999998
+Ka 0.054545 0.054545 0.054545
+Kd 0.083718 0.151254 0.375738
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump C:\\Users\\Zaker\\Downloads\\magic-portal\\source\\PortalSurface_norm.png
+map_Kd C:\\Users\\Zaker\\Downloads\\magic-portal\\source\\PortalSurface_base.png
+map_Ke C:\\Users\\Zaker\\Downloads\\magic-portal\\source\\PortalSurface_emis.png
