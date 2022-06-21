@@ -5,10 +5,8 @@ import Controller.Teleport;
 import Controller.Tile;
 import base.*;
 import com.example.javafx.HelloController;
-import org.lwjglx.test.spaceinvaders.Game;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import static base.GameController.*;
 import static base.Yell.YELL_RADIUS;
@@ -121,7 +119,9 @@ public class QLearning {
         }
 
         // while round has not ended yet
-        while (!GameEndChecker.isInTerminalState()&& moveCount<(variables.getWidth()* variables.getHeight())) {
+        while (!GameEndChecker.isInTerminalState()) {
+
+            ArrayList<int[]> traceList = new ArrayList<>();
 
             // for every agent
             for (int i = 0; i < agents.size(); i++) {
@@ -155,6 +155,8 @@ public class QLearning {
             }
             // increment move count
             moveCount++;
+
+            listOfTrace.add(traceList);
         }
         gameEnded = true;
         putAgentsBackOnSpawn();

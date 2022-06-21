@@ -1,17 +1,12 @@
 package Visuals.main;
 
 import Controller.*;
-import QLearning.QLearning;
-import Visuals.GUI.GUIRenderer;
-import Visuals.GUI.GUITexture;
 import Visuals.engine.graphics.Loader;
 import Visuals.engine.graphics.MasterRenderer;
-import Visuals.engine.graphics.models.RawModel;
 import Visuals.engine.graphics.models.TexturedModel;
 import Visuals.engine.graphics.textures.ModelTexture;
 import Visuals.engine.graphics.textures.TerrainTexture;
 import Visuals.engine.graphics.textures.TerrainTexturePack;
-import Visuals.engine.graphics.textures.objConverter.ModelData;
 import Visuals.engine.graphics.textures.objConverter.OBJFileLoader;
 import Visuals.engine.io.Input;
 import Visuals.engine.io.Window;
